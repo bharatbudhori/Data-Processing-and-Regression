@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:practice_app/another_screen.dart';
+import 'package:practice_app/welcome.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,6 +12,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Showing Alret SnackBar',
       home: DemoApp(),
+      initialRoute: '/',
+      defaultTransition: Transition.leftToRightWithFade,
+      getPages: [
+        GetPage(name: '/', page: () => DemoApp()),
+        GetPage(name: '/welcome', page: () => WelcomeScreen()),
+        GetPage(name: '/another_screen', page: () => AnotherScreen())
+      ],
     );
   }
 }
@@ -50,6 +59,18 @@ class DemoApp extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () async {
+          var data = await Get.toNamed(
+            '/welcome',
+            //transition: Transition.leftToRightWithFade,
+            //popGesture: true,
+            arguments: 'Data from main screen',
+          );
+          print(data);
+        },
+        label: Text('Go to welcome Screen'),
+      ),
     );
   }
 }
@@ -71,7 +92,7 @@ void showSnackBar() {
     //showProgressIndicator: true,
     //userInputForm: Form(child: TextField()),
     onTap: (snack) {
-      print('Snackbar tapped');
+      Get.toNamed('/another_screen');
     },
   );
 }
