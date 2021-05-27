@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practice_app/another_screen.dart';
+
+import 'package:practice_app/student_page.dart';
 import 'package:practice_app/welcome.dart';
 
 void main() => runApp(MyApp());
@@ -17,7 +19,8 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: '/', page: () => DemoApp()),
         GetPage(name: '/welcome', page: () => WelcomeScreen()),
-        GetPage(name: '/another_screen/', page: () => AnotherScreen())
+        GetPage(name: '/another_screen/', page: () => AnotherScreen()),
+        GetPage(name: '/student', page: () => StudentPage()),
       ],
     );
   }
@@ -55,6 +58,13 @@ class DemoApp extends StatelessWidget {
               },
               icon: Icon(Icons.settings_display_outlined),
               label: Text('Show Bottom Sheet'),
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                Get.toNamed('/student');
+              },
+              icon: Icon(Icons.school),
+              label: Text('Student Screen'),
             ),
           ],
         ),
