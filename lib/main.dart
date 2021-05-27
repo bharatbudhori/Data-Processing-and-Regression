@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: '/', page: () => DemoApp()),
         GetPage(name: '/welcome', page: () => WelcomeScreen()),
-        GetPage(name: '/another_screen', page: () => AnotherScreen())
+        GetPage(name: '/another_screen/', page: () => AnotherScreen())
       ],
     );
   }
@@ -62,7 +62,7 @@ class DemoApp extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
           var data = await Get.toNamed(
-            '/welcome',
+            '/welcome?Page=developer_jason&username=@dev.jason_',
             //transition: Transition.leftToRightWithFade,
             //popGesture: true,
             arguments: 'Data from main screen',
@@ -92,7 +92,10 @@ void showSnackBar() {
     //showProgressIndicator: true,
     //userInputForm: Form(child: TextField()),
     onTap: (snack) {
-      Get.toNamed('/another_screen');
+      Get.toNamed(
+        '/another_screen',
+        arguments: 'This is 1st data from main screen',
+      );
     },
   );
 }

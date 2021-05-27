@@ -16,7 +16,9 @@ class WelcomeScreen extends StatelessWidget {
             Text(Get.arguments),
             ElevatedButton(
               onPressed: () {
-                Get.toNamed('/another_screen');
+                //Get.toNamed("/another_screen/This is some value");
+                Get.toNamed('/another_screen',
+                    arguments: "data from welcome screen to home screen");
               },
               child: Text('GO to another screen'),
             ),
@@ -26,6 +28,7 @@ class WelcomeScreen extends StatelessWidget {
               },
               child: Text('GO back to main screen'),
             ),
+            Text('${Get.parameters['Page']} ${Get.parameters['username']}'),
           ],
         ),
       ),
