@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 
 import 'controller.dart';
 
+//TextEditingController textController = TextEditingController();
+Controller myController = Get.put(Controller());
+
 class StudentPage extends StatelessWidget {
-  Controller myController = Get.put(Controller());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +28,7 @@ class StudentPage extends StatelessWidget {
               Text('Age is: ${myController.student.value.age}'),
               ElevatedButton(
                 onPressed: () {
-                  //newAge();
+                  // newAge();
                 },
                 child: Text('Enter new age'),
               ),
@@ -37,3 +39,27 @@ class StudentPage extends StatelessWidget {
     );
   }
 }
+
+//  newAge() {
+//   Get.bottomSheet(
+//     Container(
+//       //margin: EdgeInsets.all(20),
+//       padding: EdgeInsets.all(16),
+//       height: 160,
+//       color: Colors.white,
+//       child: TextField(
+//         //controller: textController,
+//         decoration: InputDecoration(
+//           border: OutlineInputBorder(),
+//           labelText: 'Enter new Age',
+//         ),
+//         keyboardType: TextInputType.number,
+//         onSubmitted: (value) {
+//           var age = int.parse(value);
+//           myController.student.value.age = age;
+//         },
+
+//       ),
+//     ),
+//   );
+// }

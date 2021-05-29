@@ -10,3 +10,12 @@ class Controller extends GetxController {
     });
   }
 }
+
+class MyController extends GetxController {
+  var count = 0;
+
+  void incriment() {
+    count++;
+    update();
+  }
+}
