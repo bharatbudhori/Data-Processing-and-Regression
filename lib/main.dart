@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practice_app/another_screen.dart';
+import 'package:practice_app/binding_page.dart';
+import 'package:practice_app/controller.dart';
 
 import 'package:practice_app/student_page.dart';
 import 'package:practice_app/welcome.dart';
@@ -11,6 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      //initialBinding: ControllerBinding(),
+      //smartManagement: SmartManagement.keepFactory,
+
       debugShowCheckedModeBanner: false,
       title: 'Showing Alret SnackBar',
       home: DemoApp(),
@@ -21,6 +26,10 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/welcome', page: () => WelcomeScreen()),
         GetPage(name: '/another_screen/', page: () => AnotherScreen()),
         GetPage(name: '/student', page: () => StudentPage()),
+        GetPage(
+            name: '/binding',
+            page: () => BindingPage(),
+            binding: ControllerBinding()),
       ],
     );
   }
@@ -65,6 +74,13 @@ class DemoApp extends StatelessWidget {
               },
               icon: Icon(Icons.school),
               label: Text('Student Screen'),
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                Get.toNamed('/binding');
+              },
+              icon: Icon(Icons.repeat_one_sharp),
+              label: Text('Binding Screen'),
             ),
           ],
         ),

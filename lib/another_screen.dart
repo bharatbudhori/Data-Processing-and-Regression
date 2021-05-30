@@ -10,13 +10,14 @@ class AnotherScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyController myController = Get.put(MyController(), permanent: true);
     return Scaffold(
       appBar: AppBar(
         title: Text('Another screen'),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Get.find<MyController>().incriment();
+          myController.incriment();
         },
         label: Text('Incriment'),
       ),
@@ -29,7 +30,7 @@ class AnotherScreen extends StatelessWidget {
             ),
             //GetX<MyController>(
             GetBuilder<MyController>(
-              init: MyController(),
+              init: myController,
               builder: (controller) {
                 return Card(
                   margin: EdgeInsets.all(40),

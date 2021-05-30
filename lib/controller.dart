@@ -19,3 +19,20 @@ class MyController extends GetxController {
     update();
   }
 }
+
+class MyController2 extends GetxController {
+  var count = 0.obs;
+
+  void incriment() {
+    count += 2;
+  }
+}
+
+class ControllerBinding implements Bindings {
+  var count = 0.obs;
+
+  @override
+  void dependencies() {
+    Get.lazyPut<MyController2>(() => MyController2());
+  }
+}
